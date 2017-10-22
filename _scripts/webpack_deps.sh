@@ -5,14 +5,28 @@
 
 source "${BASH_SOURCE%/*}/common.bash"
 
-pushd internal/dev > /dev/null
+{
+	pushd internal/dev > /dev/null
 
-npm install
+	npm install
 
-./node_modules/.bin/webpack
+	./node_modules/.bin/webpack
 
-popd > /dev/null
+	popd > /dev/null
+}
 
-pushd internal/prod > /dev/null
+{
+	pushd internal/prod > /dev/null
 
-./node_modules/.bin/webpack
+	./node_modules/.bin/webpack
+
+	popd > /dev/null
+}
+
+{
+	pushd internal/testutils > /dev/null
+
+	./node_modules/.bin/webpack
+
+	popd > /dev/null
+}
